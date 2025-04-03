@@ -1,10 +1,17 @@
 const express = require("express");
-const { addUrl, getUrl } = require("../controller/urlController");
+const {
+  addUrl,
+  getUrl,
+  getUrlStat,
+  updateUrl,
+  deleteUrl,
+} = require("../controller/urlController");
 
 const Router = express.Router();
 Router.post("/shorten", addUrl);
 Router.get("/:shortId", getUrl);
-// Router.post("/shorten");
-// Router.delete("/shorten/:shortId");
+Router.patch("/:shortId", updateUrl);
+Router.delete("/:shortId", deleteUrl);
+Router.get("/stats/:shortId", getUrlStat);
 
 module.exports = Router;
